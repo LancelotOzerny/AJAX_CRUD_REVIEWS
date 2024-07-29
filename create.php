@@ -20,8 +20,6 @@ else
 
     $validator = new Validator($prepareData);
 
-    $data['POST'] = $prepareData;
-
     $data['ERRORS']['EMAIL'] = join('<br/>', $validator->getEmailErrors());
     $data['ERRORS']['NAME'] = join('<br/>', $validator->getNameErrors());
     $data['ERRORS']['TEXT'] = join('<br/>', $validator->getTextErrors());
@@ -32,6 +30,21 @@ else
         {
             die(json_encode($data));
         }
+    }
+
+    $prepareData['EMAIL'] = htmlspecialchars($prepareData['EMAIL']);
+    $prepareData['NAME'] = htmlspecialchars($prepareData['NAME']);
+    $prepareData['TEXT'] = htmlspecialchars($prepareData['TEXT']);
+
+    $result = ReviewTable::Create($prepareData);
+
+    if ($result)
+    {
+        $data['RESULT'] = true;
+    }
+    else
+    {
+        $data['RESULT'] = false;
     }
 }
 
