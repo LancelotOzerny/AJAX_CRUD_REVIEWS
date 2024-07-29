@@ -81,20 +81,18 @@ $reviews = \classes\ReviewTable::Read();
                     <div class="col-12 col-lg-6">
                         <div>
                             <label for="InputName" class="form-label">Ваше имя</label>
+                            <p class="form-text">Имя может содержать от 4 до 16 латинских букв или цифр</p>
                             <input id="InputName" class="form-control" type="text" placeholder="John">
-                            <p class="form-text">
-                                Напишите ваше имя (или никнейм) которое будет отображаться другим пользователям
-                            </p>
+                            <p id="NameInputErrors" class="form-text text-danger"></p>
                         </div>
                     </div>
                     <div class="col-12 col-lg-6">
                         <div>
                             <label for="InputEmail" class="form-label">Ваш email</label>
+                            <p class="form-text">Не забудьте <s>выгулять собаку</s> добавить @ в ваш email</p>
                             <input id="InputEmail" class="form-control" type="text" placeholder="John">
-                            <p class="form-text">
-                                Напишите ваш email для обратной связи
-                            </p>
-                        </div>
+                            <p id="EmailInputErrors" class="form-text text-danger"></p>
+                        </>
                     </div>
                 </div>
 
@@ -102,6 +100,7 @@ $reviews = \classes\ReviewTable::Read();
                     <label for="InputMessage" class="form-label">Комментарий</label>
                     <textarea id="InputMessage" class="form-control" style="min-height: 200px"
                               placeholder="Смотрел тут на днях фильм..."></textarea>
+                    <p id="TextInputErrors" class="form-text text-danger"></p>
                 </div>
             </form>
         </div>
@@ -111,15 +110,40 @@ $reviews = \classes\ReviewTable::Read();
 <div class="container">
     <div class="row">
         <div class="col-12 d-flex justify-content-end mb-5">
-            <button class="btn btn-md btn-success">
-                Написать
-            </button>
+            <button id="CreateReviewButton" class="btn btn-md btn-success">Написать</button>
         </div>
     </div>
 </div>
 
 <script>
     $(document).ready(() => $("#spinner").remove());
+
+    $("#CreateReviewButton").click(() => {
+        $("#CreateReviewButton").addClass("disabled");
+
+        $.ajax({
+            url: '/create.php',
+            method: 'post',
+            data: {
+                'NAME' : $("#InputName").val(),
+                'EMAIL' : $("#InputEmail").val(),
+                'TEXT' : $("#InputMessage").val(),
+            },
+
+            success: (data) => {
+                arr = JSON.parse(data);
+
+                console.log(arr);
+
+                $("#EmailInputErrors").text(arr['ERRORS']['EMAIL']);
+                $("#NameInputErrors").text(arr['ERRORS']['NAME']);
+                $("#TextInputErrors").text(arr['ERRORS']['TEXT']);
+
+
+                $("#CreateReviewButton").removeClass("disabled");
+            }
+        });
+    });
 </script>
 </body>
 </html>
