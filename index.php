@@ -21,6 +21,8 @@ $reviews = \classes\ReviewTable::Read();
     <img src="assets/img/spinner.gif">
 </div>
 
+<div id="messages" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11"></div>
+
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -117,33 +119,7 @@ $reviews = \classes\ReviewTable::Read();
 
 <script>
     $(document).ready(() => $("#spinner").remove());
-
-    $("#CreateReviewButton").click(() => {
-        $("#CreateReviewButton").addClass("disabled");
-
-        $.ajax({
-            url: '/create.php',
-            method: 'post',
-            data: {
-                'NAME' : $("#InputName").val(),
-                'EMAIL' : $("#InputEmail").val(),
-                'TEXT' : $("#InputMessage").val(),
-            },
-
-            success: (data) => {
-                arr = JSON.parse(data);
-
-                console.log(arr);
-
-                $("#EmailInputErrors").text(arr['ERRORS']['EMAIL']);
-                $("#NameInputErrors").text(arr['ERRORS']['NAME']);
-                $("#TextInputErrors").text(arr['ERRORS']['TEXT']);
-
-
-                $("#CreateReviewButton").removeClass("disabled");
-            }
-        });
-    });
 </script>
+<script src="assets/js/addReview.js"></script>
 </body>
 </html>
