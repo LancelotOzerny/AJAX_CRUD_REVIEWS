@@ -4,9 +4,16 @@ namespace classes;
 
 class ReviewTable
 {
-    public static function Create(array $params)
+    public static function Create(array $params) : bool
     {
+        $sql = 'INSERT INTO Reviews (`name`, `email`, `text`) VALUES (:name, :email, :text)';
 
+        $prepare = DataBase::connection()->prepare($sql);
+        $prepare->bindValue(':name', $params['NAME']);
+        $prepare->bindValue(':email', $params['EMAIL']);
+        $prepare->bindValue(':text', $params['TEXT']);
+
+        return $prepare->execute();
     }
 
     public static function Read(array $filter = []) : array
