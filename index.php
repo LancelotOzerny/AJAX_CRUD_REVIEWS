@@ -68,8 +68,49 @@ $reviews = \classes\ReviewTable::Read();
 </div>
 
 <div class="container">
+    <div class="row mx-5 py-5">
+        <hr>
+    </div>
+</div>
+
+<div class="container">
     <div class="row">
-        <div class="col-12 d-flex justify-content-end">
+        <div class="col-12">
+            <form class="form mb-5">
+                <div class="row">
+                    <div class="col-12 col-lg-6">
+                        <div>
+                            <label for="InputName" class="form-label">Ваше имя</label>
+                            <input id="InputName" class="form-control" type="text" placeholder="John">
+                            <p class="form-text">
+                                Напишите ваше имя (или никнейм) которое будет отображаться другим пользователям
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div>
+                            <label for="InputEmail" class="form-label">Ваш email</label>
+                            <input id="InputEmail" class="form-control" type="text" placeholder="John">
+                            <p class="form-text">
+                                Напишите ваш email для обратной связи
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="InputMessage" class="form-label">Комментарий</label>
+                    <textarea id="InputMessage" class="form-control" style="min-height: 200px"
+                              placeholder="Смотрел тут на днях фильм..."></textarea>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-end mb-5">
             <button class="btn btn-md btn-success">
                 Написать
             </button>
