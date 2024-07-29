@@ -1,3 +1,7 @@
+<?php
+require_once __DIR__ . '/autoload.php';
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -24,7 +28,7 @@
 </div>
 
 <div class="container">
-    <table class="table table-borderess">
+    <table class="table table-hover">
         <thead>
         <tr>
             <th scope="col"><a href="#" class="text-dark">ID</a></th>
@@ -35,6 +39,50 @@
         </tr>
         </thead>
         <tbody>
+        <tr>
+            <th>0</th>
+            <td>Lancelot</td>
+            <td>lancelot.ozernuy@gmail.com</td>
+            <td>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae illo pariatur quidem.
+                Aliquam beatae excepturi, illum in incidunt natus, neque, nihil obcaecati praesentium quas
+                quod repellat sed similique tempora ullam.
+            </td>
+            <td>15:40:12<br/>19.10.2002</td>
+        </tr>
+        <tr>
+            <th>0</th>
+            <td>Lancelot</td>
+            <td>lancelot.ozernuy@gmail.com</td>
+            <td>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae illo pariatur quidem.
+                Aliquam beatae excepturi, illum in incidunt natus, neque, nihil obcaecati praesentium quas
+                quod repellat sed similique tempora ullam.
+            </td>
+            <td>15:40:12<br/>19.10.2002</td>
+        </tr>
+        <tr>
+            <th>0</th>
+            <td>Lancelot</td>
+            <td>lancelot.ozernuy@gmail.com</td>
+            <td>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae illo pariatur quidem.
+                Aliquam beatae excepturi, illum in incidunt natus, neque, nihil obcaecati praesentium quas
+                quod repellat sed similique tempora ullam.
+            </td>
+            <td>15:40:12<br/>19.10.2002</td>
+        </tr>
+        <tr>
+            <th>0</th>
+            <td>Lancelot</td>
+            <td>lancelot.ozernuy@gmail.com</td>
+            <td>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae illo pariatur quidem.
+                Aliquam beatae excepturi, illum in incidunt natus, neque, nihil obcaecati praesentium quas
+                quod repellat sed similique tempora ullam.
+            </td>
+            <td>15:40:12<br/>19.10.2002</td>
+        </tr>
         <tr>
             <th>0</th>
             <td>Lancelot</td>
