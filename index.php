@@ -1,5 +1,7 @@
 <?php
 require_once __DIR__ . '/autoload.php';
+
+$reviews = \classes\ReviewTable::Read();
 ?>
 
 <!DOCTYPE html>
@@ -39,61 +41,15 @@ require_once __DIR__ . '/autoload.php';
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <th>0</th>
-            <td>Lancelot</td>
-            <td>lancelot.ozernuy@gmail.com</td>
-            <td>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae illo pariatur quidem.
-                Aliquam beatae excepturi, illum in incidunt natus, neque, nihil obcaecati praesentium quas
-                quod repellat sed similique tempora ullam.
-            </td>
-            <td>15:40:12<br/>19.10.2002</td>
-        </tr>
-        <tr>
-            <th>0</th>
-            <td>Lancelot</td>
-            <td>lancelot.ozernuy@gmail.com</td>
-            <td>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae illo pariatur quidem.
-                Aliquam beatae excepturi, illum in incidunt natus, neque, nihil obcaecati praesentium quas
-                quod repellat sed similique tempora ullam.
-            </td>
-            <td>15:40:12<br/>19.10.2002</td>
-        </tr>
-        <tr>
-            <th>0</th>
-            <td>Lancelot</td>
-            <td>lancelot.ozernuy@gmail.com</td>
-            <td>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae illo pariatur quidem.
-                Aliquam beatae excepturi, illum in incidunt natus, neque, nihil obcaecati praesentium quas
-                quod repellat sed similique tempora ullam.
-            </td>
-            <td>15:40:12<br/>19.10.2002</td>
-        </tr>
-        <tr>
-            <th>0</th>
-            <td>Lancelot</td>
-            <td>lancelot.ozernuy@gmail.com</td>
-            <td>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae illo pariatur quidem.
-                Aliquam beatae excepturi, illum in incidunt natus, neque, nihil obcaecati praesentium quas
-                quod repellat sed similique tempora ullam.
-            </td>
-            <td>15:40:12<br/>19.10.2002</td>
-        </tr>
-        <tr>
-            <th>0</th>
-            <td>Lancelot</td>
-            <td>lancelot.ozernuy@gmail.com</td>
-            <td>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae illo pariatur quidem.
-                Aliquam beatae excepturi, illum in incidunt natus, neque, nihil obcaecati praesentium quas
-                quod repellat sed similique tempora ullam.
-            </td>
-            <td>15:40:12<br/>19.10.2002</td>
-        </tr>
+        <?php foreach($reviews as $review): ?>
+            <tr>
+                <th><?= $review['ID'] ?></th>
+                <td><?= $review['NAME'] ?></td>
+                <td><?= $review['EMAIL'] ?></td>
+                <td><?= $review['TEXT'] ?></td>
+                <td><?= $review['DATE'] ?></td>
+            </tr>
+        <?php endforeach; ?>
         </tbody>
     </table>
 </div>
