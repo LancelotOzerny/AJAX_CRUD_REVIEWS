@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/autoload.php';
+require_once __DIR__ . '/core/bootstrap.php';
 
 $reviews = \classes\ReviewTable::Read();
 ?>
