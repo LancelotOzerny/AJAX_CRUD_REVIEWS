@@ -32,6 +32,14 @@ $reviews = \classes\ReviewTable::Read();
 </div>
 
 <div class="container">
+    <div class="row">
+        <div class="col-12">
+            <button id="testButton" class="btn btn-outline-danger">press me</button>
+        </div>
+    </div>
+</div>
+
+<div class="container">
     <table class="table table-hover">
         <thead>
         <tr>
@@ -42,16 +50,7 @@ $reviews = \classes\ReviewTable::Read();
             <th scope="col"><a href="#" class="text-dark">Дата</a></th>
         </tr>
         </thead>
-        <tbody>
-        <?php foreach($reviews as $review): ?>
-            <tr>
-                <th><?= $review['ID'] ?></th>
-                <td><?= $review['NAME'] ?></td>
-                <td><?= $review['EMAIL'] ?></td>
-                <td><?= $review['TEXT'] ?></td>
-                <td><?= $review['DATE'] ?></td>
-            </tr>
-        <?php endforeach; ?>
+        <tbody id="ReviewsList">
         </tbody>
     </table>
 </div>
@@ -120,6 +119,7 @@ $reviews = \classes\ReviewTable::Read();
 <script>
     $(document).ready(() => $("#spinner").remove());
 </script>
+<script src="assets/js/updateTable.js"></script>
 <script src="assets/js/addReview.js"></script>
 </body>
 </html>

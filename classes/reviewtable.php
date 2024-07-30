@@ -16,7 +16,7 @@ class ReviewTable
         return $prepare->execute();
     }
 
-    public static function Read(array $filter = []) : array
+    public static function Read(array $filter = [], int $count = -1, int $offset = 1) : array
     {
         $sql = 'SELECT * FROM Reviews';
 
@@ -33,12 +33,24 @@ class ReviewTable
             $sql .= join(', ', $params);
         }
 
+        if ($count !== -1)
+        {
+            $sql .= ' LIMIT :limit';
+            $sql .= ' OFFSET :offset';
+        }
+
         $prepare = DataBase::connection()->prepare($sql);
 
         foreach ($filter as $key => $value)
         {
             $lower = mb_strtolower($key);
             $prepare->bindValue(":$lower", $value);
+        }
+
+        if ($count !== -1)
+        {
+            $prepare->bindValue(":limit", $count, \PDO::PARAM_INT);
+            $prepare->bindValue(":offset", $offset, \PDO::PARAM_INT);
         }
 
         $prepare->execute();

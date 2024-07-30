@@ -33,6 +33,7 @@ $("#CreateReviewButton").click(() => {
                         class: 'toast-body alert-success',
                         text: 'Комментарий успешно добавлен!',
                     }));
+                    UpdateTable();
                 }
                 else
                 {
