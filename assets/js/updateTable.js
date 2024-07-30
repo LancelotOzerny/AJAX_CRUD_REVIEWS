@@ -1,6 +1,22 @@
 let currentPage = 0;
 let reviewsOnPage = 5;
 
+let sort = 'name';
+let sortOrder = 'asc';
+
+$('.sort-button').click(function() {
+    let currentSort = $(this).attr('data-sort');
+    if (currentSort === sort)
+    {
+        sortOrder = (sortOrder === 'asc' ? 'desc' : 'asc');
+    }
+    else
+    {
+        sort = currentSort;
+    }
+    UpdateTable();
+});
+
 function UpdateTable()
 {
     $.ajax({
@@ -9,6 +25,8 @@ function UpdateTable()
         data: {
             'COUNT': reviewsOnPage,
             'PAGE': currentPage,
+            'SORT': sort,
+            'DIRECTION': sortOrder,
         },
         success: (data) => {
             let dataList = JSON.parse(data);

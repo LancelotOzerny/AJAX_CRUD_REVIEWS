@@ -35,11 +35,11 @@ $reviews = \classes\ReviewTable::Read();
     <table class="table table-hover">
         <thead>
         <tr>
-            <th scope="col"><a href="#" class="text-dark">ID</a></th>
-            <th scope="col"><a href="#" class="text-dark">Пользователь</a></th>
-            <th scope="col"><a href="#" class="text-dark">Email</a></th>
+            <th scope="col"><a href="#" data-sort="id" class="sort-button text-dark">ID</a></th>
+            <th scope="col"><a href="#" data-sort="name" class="sort-button text-dark">Пользователь</a></th>
+            <th scope="col"><a href="#" data-sort="email" class="sort-button text-dark">Email</a></th>
             <th scope="col">Комментарий</th>
-            <th scope="col"><a href="#" class="text-dark">Дата</a></th>
+            <th scope="col"><a href="#" data-sort="date" class="sort-button text-dark">Дата</a></th>
         </tr>
         </thead>
         <tbody id="ReviewsList">

@@ -16,7 +16,7 @@ class ReviewTable
         return $prepare->execute();
     }
 
-    public static function Read(array $filter = [], int $count = -1, int $offset = 1) : array
+    public static function Read(array $filter = [], int $count = -1, int $offset = 1, string $order = 'name', string $direction = 'asc') : array
     {
         $sql = 'SELECT * FROM Reviews';
 
@@ -32,6 +32,8 @@ class ReviewTable
             $sql .= ' WHERE ';
             $sql .= join(', ', $params);
         }
+
+        $sql .= " ORDER BY $order $direction";
 
         if ($count !== -1)
         {
