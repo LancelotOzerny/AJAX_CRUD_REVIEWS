@@ -32,14 +32,6 @@ $reviews = \classes\ReviewTable::Read();
 </div>
 
 <div class="container">
-    <div class="row">
-        <div class="col-12">
-            <button id="testButton" class="btn btn-outline-danger">press me</button>
-        </div>
-    </div>
-</div>
-
-<div class="container">
     <table class="table table-hover">
         <thead>
         <tr>
@@ -58,12 +50,7 @@ $reviews = \classes\ReviewTable::Read();
 <div class="container">
     <div class="row my-5">
         <div class="col-12 d-flex justify-content-center">
-            <div class="btn-group-lg">
-                <button class="btn btn-outline-secondary">0</button>
-                <button class="btn btn-secondary">1</button>
-                <button class="btn btn-outline-secondary">2</button>
-                <button class="btn btn-outline-secondary">3</button>
-            </div>
+            <div id="pageNavigation" class="btn-group-lg"></div>
         </div>
     </div>
 </div>
@@ -117,7 +104,10 @@ $reviews = \classes\ReviewTable::Read();
 </div>
 
 <script>
-    $(document).ready(() => $("#spinner").remove());
+    $(document).ready(() => {
+        $("#spinner").remove();
+        UpdateTable();
+    });
 </script>
 <script src="assets/js/updateTable.js"></script>
 <script src="assets/js/addReview.js"></script>

@@ -3,8 +3,8 @@ require_once __DIR__ . '/autoload.php';
 
 use classes\ReviewTable;
 
-$count = intval($_POST['COUNT']) ?? -1;
-$offset = intval($_POST['OFFSET']) ?? 0;
+$count = intval($_POST['COUNT']) ?? 0;
+$offset = intval($_POST['PAGE']) * $count ?? 0;
 
 $data = [
     'count' => ReviewTable::CountAll(),

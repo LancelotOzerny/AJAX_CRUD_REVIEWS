@@ -1,21 +1,17 @@
-$("#testButton").click(() => {
-    UpdateTable()
-});
+let currentPage = 0;
+let reviewsOnPage = 5;
 
 function UpdateTable()
 {
-    let count = 5;
-
     $.ajax({
         url: '/read.php',
         method: 'post',
         data: {
-            'COUNT': 5,
-            'OFFSET': 0,
+            'COUNT': reviewsOnPage,
+            'PAGE': currentPage,
         },
         success: (data) => {
             let dataList = JSON.parse(data);
-            console.log(dataList);
 
             let tableContent = '';
             for (let i = 0, count = dataList['reviews'].length; i < count; ++i)
@@ -30,6 +26,31 @@ function UpdateTable()
             }
 
             $("#ReviewsList").html(tableContent);
+            UpdatePageNavigation(dataList['count']);
         },
     });
+}
+
+function UpdatePageNavigation(count)
+{
+    let buttonsCount = Math.ceil(count / reviewsOnPage);
+
+    let group = $("#pageNavigation");
+    group.html('');
+
+    for (let i = 0; i < buttonsCount; ++i)
+    {
+        let button = $("<button>", {
+            'data-page': i,
+            text: (i + 1),
+            class: 'page-button mx-1 btn btn-' + (currentPage === i ? '' : 'outline-') + 'secondary' + (currentPage === i ? ' disabled' : ''),
+        })
+
+        button.click(() => {
+            currentPage = i;
+            UpdateTable(i);
+        });
+
+        group.append(button);
+    }
 }
