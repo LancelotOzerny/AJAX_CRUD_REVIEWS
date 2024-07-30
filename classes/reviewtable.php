@@ -67,4 +67,12 @@ class ReviewTable
     {
 
     }
+
+    public static function CountAll()
+    {
+        $sql = 'SELECT COUNT(*) AS `count` FROM Reviews';
+        $dbResult = DataBase::connection()->query($sql);
+        $arr = $dbResult->fetch(\PDO::FETCH_ASSOC);
+        return $arr['count'];
+    }
 }
