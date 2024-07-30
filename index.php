@@ -10,15 +10,15 @@ $reviews = \classes\ReviewTable::Read();
     <meta charset="UTF-8">
     <title>CRUD комментариев</title>
 
-    <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="app/templates/crud/assets/css/reset.css">
+    <link rel="stylesheet" href="app/templates/crud/assets/css/bootstrap.css">
 
-    <script src="assets/js/jQuery.js"></script>
-    <script src="assets/js/bootstrap.js"></script>
+    <script src="app/templates/crud/assets/js/jQuery.js"></script>
+    <script src="app/templates/crud/assets/js/bootstrap.js"></script>
 </head>
 <body>
 <div id="spinner" class="d-flex justify-content-center align-items-center" style="height: 100vh;">
-    <img src="assets/img/spinner.gif">
+    <img src="app/templates/crud/assets/img/spinner.gif">
 </div>
 
 <div id="messages" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11"></div>
@@ -109,7 +109,7 @@ $reviews = \classes\ReviewTable::Read();
         UpdateTable();
     });
 </script>
-<script src="assets/js/updateTable.js"></script>
-<script src="assets/js/addReview.js"></script>
+<script src="app/templates/crud/assets/js/updateTable.js"></script>
+<script src="app/templates/crud/assets/js/addReview.js"></script>
 </body>
 </html>
