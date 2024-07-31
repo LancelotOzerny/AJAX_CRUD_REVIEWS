@@ -77,9 +77,11 @@ class ReviewTable
 
     }
 
-    public static function Delete(int $id)
+    public static function Delete(int $id) : bool
     {
-
+        $prepare = DataBase::connection()->prepare('DELETE FROM Reviews WHERE id = :id');
+        $prepare->bindValue(':id', $id);
+        return $prepare->execute();
     }
 
     public static function CountAll()

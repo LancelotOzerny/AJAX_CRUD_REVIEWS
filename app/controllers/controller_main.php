@@ -23,4 +23,9 @@ class Controller_Main extends Controller
     {
         $this->model->Create();
     }
+
+    public function action_delete()
+    {
+        $this->model->Delete();
+    }
 }

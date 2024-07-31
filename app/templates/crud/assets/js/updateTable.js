@@ -32,19 +32,29 @@ function UpdateTable()
         success: (data) => {
             let dataList = JSON.parse(data);
 
-            let tableContent = '';
+            $("#ReviewsList").html('');
             for (let i = 0, count = dataList['reviews'].length; i < count; ++i)
             {
-                tableContent += '<tr>';
-                tableContent += '<th>' + dataList['reviews'][i]['ID'] + '</th>';
-                tableContent += '<td>' + dataList['reviews'][i]['NAME'] + '</td>';
-                tableContent += '<td>' + dataList['reviews'][i]['EMAIL'] + '</td>';
-                tableContent += '<td>' + dataList['reviews'][i]['TEXT'] + '</td>';
-                tableContent += '<td>' + dataList['reviews'][i]['DATE'] + '</td>';
-                tableContent += '</tr>';
+                let tableContent = $("<tr>")
+                tableContent.append($("<th>", { text: dataList['reviews'][i]['ID'] }))
+                tableContent.append($("<td>", { text: dataList['reviews'][i]['NAME'] }))
+                tableContent.append($("<td>", { text: dataList['reviews'][i]['EMAIL'] }))
+                tableContent.append($("<td>", { text: dataList['reviews'][i]['TEXT'] }))
+                tableContent.append($("<td>", { text: dataList['reviews'][i]['DATE'] }))
+
+                let button = $("<button>", {
+                    text: 'delete',
+                    class: 'btn btn-danger'
+                });
+
+                button.click(function() {
+                    DeleteReview(dataList['reviews'][i]['ID']);
+                });
+
+                tableContent.append($("<td>").append(button))
+                $("#ReviewsList").append(tableContent);
             }
 
-            $("#ReviewsList").html(tableContent);
             UpdatePageNavigation(dataList['count']);
         },
     });
@@ -72,4 +82,43 @@ function UpdatePageNavigation(count)
 
         group.append(button);
     }
+}
+
+function DeleteReview(id)
+{
+    $.ajax({
+        url: '/delete/',
+        method: 'post',
+        data: {
+            'ID': id
+        },
+        success: (data) => {
+            let dataArr = JSON.parse(data);
+
+            let container = $("<div>", {
+                class: 'toast show mt-1',
+            });
+
+            if (dataArr['RESULT'] === true)
+            {
+                UpdateTable();
+                container.append($("<div>", {
+                    class: 'toast-body alert-success',
+                    text: 'Комментарий успешно удален!',
+                }));
+            }
+            else
+            {
+                container.append($("<div>", {
+                    class: 'toast-body alert-success',
+                    text: 'Ошибка при удалении комментария.',
+                }));
+            }
+
+            $("#messages").append(container);
+            setTimeout(() => {
+                container.remove();
+            }, 3000);
+        }
+    });
 }

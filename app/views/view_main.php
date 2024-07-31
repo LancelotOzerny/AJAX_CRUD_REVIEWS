@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <p class="display-4 my-5 text-center">AJAX CRUD комментариев</p>
+            <p class="display-4 my-5 text-center">AJAX Удаление, Создание и Чтение комментариев</p>
         </div>
     </div>
 </div>
@@ -15,10 +15,10 @@
             <th scope="col"><a href="#" data-sort="email" class="sort-button text-dark">Email</a></th>
             <th scope="col">Комментарий</th>
             <th scope="col"><a href="#" data-sort="date" class="sort-button text-dark">Дата</a></th>
+            <th scope="col"></th>
         </tr>
         </thead>
-        <tbody id="ReviewsList">
-        </tbody>
+        <tbody id="ReviewsList"></tbody>
     </table>
 </div>
 

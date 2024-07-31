@@ -57,18 +57,24 @@ class Model_Main extends Model
             $prepareData['NAME'] = htmlspecialchars($prepareData['NAME']);
             $prepareData['TEXT'] = htmlspecialchars($prepareData['TEXT']);
 
-            $result = ReviewTable::Create($prepareData);
-
-            if ($result)
-            {
-                $data['RESULT'] = true;
-            }
-            else
-            {
-                $data['RESULT'] = false;
-            }
+            $data['RESULT'] = ReviewTable::Create($prepareData);
         }
 
+        die(json_encode($data));
+    }
+
+    public function Delete()
+    {
+        $data = [];
+        if (isset($_POST['ID']))
+        {
+            $id = intval($_POST['ID']);
+            $data['RESULT'] = ReviewTable::Delete($id);
+        }
+        else
+        {
+            $data['ERRORS'] = 'Не указан удаляемый пользователь!';
+        }
         die(json_encode($data));
     }
 }
