@@ -1,7 +1,7 @@
 let currentPage = 0;
 let reviewsOnPage = 5;
 
-let sort = 'name';
+let sort = 'date';
 let sortOrder = 'asc';
 
 $('.sort-button').click(function() {

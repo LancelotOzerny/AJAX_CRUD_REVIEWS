@@ -18,4 +18,9 @@ class Controller_Main extends Controller
     {
         $this->model->Read();
     }
+
+    public function action_create()
+    {
+        $this->model->Create();
+    }
 }
