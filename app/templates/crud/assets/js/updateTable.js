@@ -19,6 +19,7 @@ $('.sort-button').click(function() {
 
 function UpdateTable()
 {
+    $('.page-button').addClass('disabled');
     $.ajax({
         url: '/read/',
         method: 'post',
