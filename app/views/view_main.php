@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <p class="display-4 my-5 text-center">CRUD комментариев</p>
+            <p class="display-4 my-5 text-center">AJAX CRUD комментариев</p>
         </div>
     </div>
 </div>
