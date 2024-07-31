@@ -2,7 +2,7 @@ $("#CreateReviewButton").click(() => {
     $("#CreateReviewButton").addClass("disabled");
 
     $.ajax({
-        url: '/create.php',
+        url: '/create/',
         method: 'post',
         data: {
             'NAME' : $("#InputName").val(),

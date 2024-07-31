@@ -20,7 +20,7 @@ $('.sort-button').click(function() {
 function UpdateTable()
 {
     $.ajax({
-        url: '/read.php',
+        url: '/read/',
         method: 'post',
         data: {
             'COUNT': reviewsOnPage,
