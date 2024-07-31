@@ -10,8 +10,5 @@ abstract class Controller
 
     }
 
-    public function action_index()
-    {
-
-    }
+    public abstract function action_index();
 }
