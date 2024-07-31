@@ -9,8 +9,19 @@ class Router
         $controllerName = 'main';
         $action = 'index';
 
-        $controllerName = "controller_$controllerName";
-        $controllerPath = $HOME . "/app/controllers/$controllerName.php";
+        $arr = explode('/', $_SERVER['REQUEST_URI']);
+        if (count($arr) === 3)
+        {
+            $action = $arr[1];
+        }
+        else if (count($arr) > 3)
+        {
+            $controllerName = $arr[1];
+            $action = $arr[2];
+        }
+
+        $controllerName = "app\controllers\controller_$controllerName";
+        $controllerPath = $HOME . "/$controllerName.php";
         $controllerPath = str_replace('/', '\\', $controllerPath);
 
         $action = "action_$action";
