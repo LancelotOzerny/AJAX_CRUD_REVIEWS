@@ -1,2 +1,5 @@
 #general
 .idea/
+
+#php classes
+app/classes/databaseconfig.php
